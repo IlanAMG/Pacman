@@ -52,7 +52,7 @@ const App = () => {
   const [lastScore, setLastScore] = useState(0)
   const [lastWinner, setLastWinner] = useState('')
   const [highscore, setHighscore] = useState('')
-  const [round, setRound] = useState(1)
+  const [round, setRound] = useState(3)
   const [vies, setVies] = useState([0, 0, 0, 0, 0])
   let pointsEat = useRef(0)
   let superPointsEat = useRef(0)
@@ -63,7 +63,7 @@ const App = () => {
   const [direction, setDirection] = useState('')
   const [directionVoulu, setDirectionVoulu] = useState('')
   //SI LE PACMAN MEURE
-  const [reStart, setReStart] = useState(true)
+  const [reStart, setReStart] = useState(false)
 
   //STATE RELATIF AUX GHOSTS
   const [mode, setMode] = useState('')
@@ -3182,13 +3182,19 @@ const App = () => {
         let newVies = [...vies]
         newVies.pop()
         setVies(newVies)
+        setDelayChangeMode(1000)
+        setDebut(false)
+        setDelayGhost(60)
+        setDelay(60)
+        setIsActive(true)
       }
-      setDelayChangeMode(1000)
-      setDebut(false)
-      setReStart(false)
-      setDelayGhost(60)
-      setDelay(60)
-      setIsActive(true)
+      if (reStart) {
+        setDelayChangeMode(1000)
+        setDelayGhost(60)
+        setDelay(60)
+        setIsActive(true)
+        setReStart(false)
+      }
     }
 
     if (debut === false && reStart === false) {
@@ -3238,7 +3244,7 @@ const App = () => {
   }, [retourRed, posRed])
 
   useLayoutEffect(() => {
-    if (round === 1 && score >= 200) {
+    if (round === 1) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3252,7 +3258,7 @@ const App = () => {
         }
       })
     }
-    if (round === 2 && score >= 100) {
+    if (round === 2) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3266,7 +3272,7 @@ const App = () => {
         }
       })
     }
-    if (round === 3 && score >= 2800 * 3) {
+    if (round === 3) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3280,7 +3286,7 @@ const App = () => {
         }
       })
     }
-    if (round === 4 && score >= 2800 * 4) {
+    if (round === 4) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3294,7 +3300,7 @@ const App = () => {
         }
       })
     }
-    if (round === 5 && score >= 2800 * 5) {
+    if (round === 5) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3308,7 +3314,7 @@ const App = () => {
         }
       })
     }
-    if (round === 6 && score >= 2800 * 6) {
+    if (round === 6) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3322,7 +3328,7 @@ const App = () => {
         }
       })
     }
-    if (round === 7 && score >= 2800 * 7) {
+    if (round === 7) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3336,7 +3342,7 @@ const App = () => {
         }
       })
     }
-    if (round === 8 && score >= 2800 * 8) {
+    if (round === 8) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3350,7 +3356,7 @@ const App = () => {
         }
       })
     }
-    if (round === 9 && score >= 3000 * 9) {
+    if (round === 9) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3364,7 +3370,7 @@ const App = () => {
         }
       })
     }
-    if (round === 10 && score >= 3000 * 10) {
+    if (round === 10) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3378,7 +3384,7 @@ const App = () => {
         }
       })
     }
-    if (round === 11 && score >= 3000 * 11) {
+    if (round === 11) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
@@ -3392,7 +3398,7 @@ const App = () => {
         }
       })
     }
-    if (round >= 12 && score >= 3000 * 12) {
+    if (round >= 12) {
       pointsEat.current = 0
       posPoints.map(pos => {
         if (pos.x === null) {
