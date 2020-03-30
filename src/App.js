@@ -52,7 +52,7 @@ const App = () => {
   const [lastScore, setLastScore] = useState(0)
   const [lastWinner, setLastWinner] = useState('')
   const [highscore, setHighscore] = useState('')
-  const [round, setRound] = useState(3)
+  const [round, setRound] = useState(1)
   const [vies, setVies] = useState([0, 0, 0, 0, 0])
   let pointsEat = useRef(0)
   let superPointsEat = useRef(0)
