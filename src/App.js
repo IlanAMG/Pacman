@@ -3178,10 +3178,17 @@ const App = () => {
     const { keyCode } = e;
 
     if (keyCode === 32) {
-      if (debut) {
+      if (debut && score === 0) {
         let newVies = [...vies]
         newVies.pop()
         setVies(newVies)
+        setDelayChangeMode(1000)
+        setDebut(false)
+        setDelayGhost(60)
+        setDelay(60)
+        setIsActive(true)
+      }
+      if (debut && score > 0) {
         setDelayChangeMode(1000)
         setDebut(false)
         setDelayGhost(60)
@@ -3445,7 +3452,7 @@ const App = () => {
       setModalVisible(true)
     }
   }, [lastScore, highscore])
-
+  
   useEffect(() => {
     fetchDB()
     // eslint-disable-next-line
